@@ -10,23 +10,78 @@
 </head>
 <body>
 <header role="banner">
-    <h1>Placeholder</h1>
-    <nav role="navigation">
-
-    </nav>
+    <h1>Joost Baas's meta-blog</h1>
 </header>
 
-<div class="wrap">
-    <main role="main">
-        <section>
-            <p>
-                This is the very first iteration of my blog. In the near future I will describe how I got this far, and
-                how I
-                will proceed to create a much more featured blogging application.
-            </p>
-        </section>
-    </main>
-</div>
+<main role="main">
+    <section>
+        <p>
+            After 10+ years of being a professional software engineer, I have remarkably little to show for it. No
+            blog posts, no source code on github, no (recorded) talks at conferences. This project will squash the
+            first two, and who knows in the end I will have something interesting to say about it at a conference as
+            well ;).
+        </p>
+        <p>
+            Aside from building a portfolio, I will use this project to gain experience with some
+            technologies/approaches I have not had a chance to use in my everyday job. The technologies that have my
+            interest are Kotlin, Google App Engine, Sparkjava, undertow, Vaadin 10 and java 9 modules.
+        </p>
+        <h2>How I got this far</h2>
+        <p>
+            Set up a google cloud account &amp; install google cloud SDK.<br/>
+            Create a pom.xml like this:
+        </p>
+        <pre>
+            <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;packaging&gt;war&lt;/packaging&gt;
+
+    &lt;groupId&gt;eu.joostbaas&lt;/groupId&gt;
+    &lt;artifactId&gt;blog&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+&lt;/project&gt;
+            </code>
+        </pre>
+        <p>
+            Create a src/main/webapp/WEB-INF/appengine-web.xml file with these contents:
+        </p>
+        <pre>
+            <code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;appengine-web-app xmlns="http://appengine.google.com/ns/1.0"&gt;
+    &lt;runtime&gt;java8&lt;/runtime&gt;
+    &lt;threadsafe&gt;true&lt;/threadsafe&gt;
+&lt;/appengine-web-app&gt;
+            </code>
+        </pre>
+        <p>
+            Create a static index.html file in src/main/webapp with whatever contents you want.<br/>
+        </p>
+        <pre><code>$ echo "hello world!" > src/main/webapp/index.html</code></pre>
+        <p>
+            Then deploy as your pre-configured appengine standard app using maven:
+        </p>
+        <pre>
+            <code>
+$ mvn -Dapp.deploy.projectId=joost-baas-blog \
+-Dapp.deploy.version=$(date "+%Y%m%d-%H%M") \
+clean package \
+com.google.cloud.tools:appengine-maven-plugin:deploy
+            </code>
+            </pre>
+    </section>
+</main>
 
 <footer role="contentinfo">
     <address>

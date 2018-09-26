@@ -1,11 +1,18 @@
-html { background:#d8d8d8; }
+html {
+    background:#d8d8d8;
+}
 html.full { background:transparent; }
 body {
     margin:0 auto;
     background:#303030;
     font-family:'Anaheim',sans-serif;
+    color: #cccccc;
+    text-align: justify;
 }
-main { position:relative; }
+main {
+    position:relative;
+    max-width: 1024pt;
+}
 body > h1, main > h1 { padding-top:8%; }
 h1, h2 {
     margin:0;
@@ -15,6 +22,22 @@ h1, h2 {
 }
 h1 { font-size:2.5em; }
 h2 { font-size:1.5em; }
+
+pre > code {
+    margin: 2pt 35pt ;
+    padding: 15pt;
+    padding-top: 4pt;
+    display: block;
+    overflow: scroll;
+    font-size: 0.9em;
+}
+
+code {
+    background: #cccccc;
+    color: #000000;
+}
+
+
 abbr[title] { border-bottom:none; }
 a {
     color:#ae4949;
@@ -81,7 +104,7 @@ footer p {
     font-size:.8em;
 }
 
-@media only screen and (min-width:36em) {
+@media only screen and (min-width:50em) {
     h1 {	font-size:4em; }
     h2 { font-size:2em; }
     section { width:60%; }
