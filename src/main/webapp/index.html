@@ -31,8 +31,7 @@
             Set up a google cloud account &amp; install google cloud SDK.<br/>
             Create a pom.xml like this:
         </p>
-        <pre>
-            <code>
+        <pre><code>
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -51,35 +50,32 @@
     &lt;/properties&gt;
 
 &lt;/project&gt;
-            </code>
-        </pre>
+        </code></pre>
         <p>
-            Create a src/main/webapp/WEB-INF/appengine-web.xml file with these contents:
+            Create a src/main/webapp/WEB-INF/appengine-web.xml file with these contents:<br />
         </p>
-        <pre>
-            <code>
+        <pre><code>
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;appengine-web-app xmlns="http://appengine.google.com/ns/1.0"&gt;
     &lt;runtime&gt;java8&lt;/runtime&gt;
     &lt;threadsafe&gt;true&lt;/threadsafe&gt;
 &lt;/appengine-web-app&gt;
-            </code>
-        </pre>
+        </code></pre>
         <p>
             Create a static index.html file in src/main/webapp with whatever contents you want.<br/>
         </p>
-        <pre><code>$ echo "hello world!" > src/main/webapp/index.html</code></pre>
+        <pre><code>
+$ echo "hello world!" > src/main/webapp/index.html
+        </code></pre>
         <p>
             Then deploy as your pre-configured appengine standard app using maven:
         </p>
-        <pre>
-            <code>
+        <pre><code>
 $ mvn -Dapp.deploy.projectId=joost-baas-blog \
 -Dapp.deploy.version=$(date "+%Y%m%d-%H%M") \
 clean package \
 com.google.cloud.tools:appengine-maven-plugin:deploy
-            </code>
-            </pre>
+        </code></pre>
     </section>
 </main>
 
